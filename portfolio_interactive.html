@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PARK JAEYEON | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0b0b0b;color:#fff;font-family:"Inter","Noto Sans KR",sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer}
+.cursor{position:fixed;left:-100px;top:-100px;width:18px;height:18px;border:1px solid #fff;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s}
+.cursor.active{width:70px;height:70px;background:#fff;mix-blend-mode:difference}
+header{position:fixed;top:0;left:0;width:100%;padding:28px 50px;display:flex;justify-content:space-between;align-items:center;z-index:1000;background:rgba(11,11,11,.35);backdrop-filter:blur(15px)}
+.logo{font-size:20px;font-weight:800;letter-spacing:-1px}nav{display:flex;gap:35px}nav a{position:relative;font-size:14px}nav a:after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:#fff;transition:.3s}nav a:hover:after{width:100%}
+.hero{height:100vh;min-height:700px;position:relative;display:flex;align-items:center;padding:0 8vw;overflow:hidden}.hero-bg{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 65%);filter:blur(10px);pointer-events:none}.hero-content{position:relative;z-index:2}.hero-small{font-size:14px;letter-spacing:3px;margin-bottom:25px;opacity:.6}.hero h1{font-size:clamp(70px,12vw,180px);line-height:.82;letter-spacing:-9px;font-weight:800}.hero h1 span{display:block}.hero-description{margin-top:50px;max-width:450px;line-height:1.8;color:#aaa}
+section{padding:150px 8vw}.section-title{display:flex;justify-content:space-between;align-items:end;margin-bottom:70px}.section-title h2{font-size:clamp(45px,7vw,100px);letter-spacing:-5px}.section-number{color:#666}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:100px}.about-text{font-size:clamp(25px,3vw,45px);line-height:1.35;letter-spacing:-2px}.about-info{border-top:1px solid #333}.info-row{display:flex;justify-content:space-between;gap:20px;padding:20px 0;border-bottom:1px solid #333;color:#aaa}.info-row strong{color:#fff;text-align:right}
+.work-controls{display:flex;gap:10px;margin-top:12px}.work-controls button{background:none;color:#fff;border:1px solid #333;padding:10px 18px;transition:.3s}.work-controls button:hover,.work-controls button.active{background:#fff;color:#000}
+.works{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:25px}.work-card{position:relative;min-height:500px;overflow:hidden;background:#161616;cursor:pointer;transform-style:preserve-3d;transition:transform .15s ease}.work-image{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .5s}
+.work-card:nth-child(1) .work-image{background:linear-gradient(135deg,#111,#555)}.work-card:nth-child(2) .work-image{background:linear-gradient(135deg,#222,#777)}.work-card:nth-child(3) .work-image{background:linear-gradient(135deg,#333,#111)}.work-card:nth-child(4) .work-image{background:linear-gradient(135deg,#555,#222)}
+.work-card:hover .work-image{transform:scale(1.08);filter:brightness(.55)}
+.work-content{position:absolute;inset:0;padding:30px;display:flex;flex-direction:column;justify-content:space-between;opacity:0;transition:.4s}.work-card:hover .work-content{opacity:1}.work-category{font-size:12px;letter-spacing:2px;color:#bbb}.work-title{font-size:clamp(35px,5vw,70px);font-weight:700;letter-spacing:-3px;line-height:1.02}.work-view{display:inline-block;border:1px solid #fff;padding:10px 18px;margin-top:15px;font-size:12px;white-space:nowrap}
+.works.list{display:flex;flex-direction:column;gap:0;width:100%}.works.list .work-card{position:relative;width:100%;min-height:145px;border-bottom:1px solid #333;background:transparent;display:grid;grid-template-columns:30% 50% 20%;transform:none!important;overflow:visible}.works.list .work-image{display:none}.works.list .work-content{position:static;inset:auto;width:100%;height:100%;min-height:145px;padding:25px 0;display:contents;opacity:1}.works.list .work-category{grid-column:1;align-self:center;font-size:11px;letter-spacing:2px;color:#999}.works.list .work-content>div:last-child{display:contents}.works.list .work-title{grid-column:2;align-self:center;font-size:clamp(30px,3vw,52px);line-height:1.05;font-weight:700;letter-spacing:-2px}.works.list .work-view{grid-column:3;justify-self:start;align-self:center;margin:0;padding:10px 14px;border:1px solid #555;transition:background .3s,color .3s}.works.list .work-view:hover{background:#fff;color:#000}
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.skill{border:1px solid #333;padding:35px;min-height:220px;transition:background .4s,color .4s,transform .4s}.skill:hover{background:#fff;color:#000;transform:translateY(-10px)}.skill-number{color:#666;margin-bottom:60px}.skill h3{font-size:28px;margin-bottom:15px}.skill p{color:#888;line-height:1.6}.skill:hover p{color:#333}
+.contact{min-height:80vh;display:flex;flex-direction:column;justify-content:center}.contact h2{font-size:clamp(60px,12vw,180px);line-height:.9;letter-spacing:-8px}.contact-mail{margin-top:50px;font-size:20px;color:#aaa}.contact-mail:hover{color:#fff}
+.reveal{opacity:0;transform:translateY(50px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}.reveal.show{opacity:1;transform:translateY(0)}
+@media(max-width:700px){header{padding:22px}nav{gap:15px}nav a{font-size:11px}.hero{padding:0 22px}.hero h1{font-size:clamp(52px,12vw,85px);letter-spacing:-5px}section{padding:100px 22px}.about{grid-template-columns:1fr;gap:60px}.works{grid-template-columns:1fr}.work-card{min-height:400px}.skills{grid-template-columns:1fr}.section-title{align-items:flex-start;flex-direction:column;gap:25px}.contact h2{letter-spacing:-5px}.cursor{display:none}.works.list .work-card{min-height:125px;grid-template-columns:minmax(0,1fr) auto;column-gap:15px;padding:18px 0}.works.list .work-content{min-height:0;padding:0}.works.list .work-category{grid-column:1/-1;align-self:end;margin-bottom:0;font-size:9px}.works.list .work-title{grid-column:1;align-self:center;font-size:clamp(21px,5vw,28px);letter-spacing:-1px}.works.list .work-view{grid-column:2;grid-row:2;align-self:center;font-size:9px;padding:8px}.works.list .work-content>div:last-child{display:contents}.info-row{font-size:12px}.info-row strong{max-width:65%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="cursor" aria-hidden="true"></div>
+<header><a href="#" class="logo">JY.</a><nav aria-label="Main navigation"><a href="#about">ABOUT</a><a href="#works">WORKS</a><a href="#skills">SKILLS</a><a href="#contact">CONTACT</a></nav></header>
+<main>
+<section class="hero" id="home"><div class="hero-bg"></div><div class="hero-content"><div class="hero-small">UI / UX DESIGNER · FRONT-END</div><h1><span>PARK</span><span>JAEYEON</span></h1><p class="hero-description">사용자 경험을 중심으로 생각하고,<br>디자인과 인터랙션을 통해<br>새로운 경험을 만드는 디자이너입니다.</p></div></section>
+<section id="about"><div class="section-title reveal"><h2>ABOUT</h2><span class="section-number">01</span></div><div class="about"><div class="about-text reveal">좋은 디자인은<br>보기 좋은 것을 넘어<br>사용자의 행동과 경험을<br>변화시킨다고 생각합니다.</div><div class="about-info reveal"><div class="info-row"><span>NAME</span><strong>박재연</strong></div><div class="info-row"><span>ROLE</span><strong>UI / UX Designer</strong></div><div class="info-row"><span>FIELD</span><strong>Web / App / Interaction</strong></div><div class="info-row"><span>TOOLS</span><strong>Figma / Photoshop / HTML / CSS</strong></div></div></div></section>
+<section id="works"><div class="section-title reveal"><div><h2>WORKS</h2></div><div><span class="section-number">02</span><div class="work-controls"><button class="active" id="gridBtn" aria-pressed="true">GRID</button><button id="listBtn" aria-pressed="false">LIST</button></div></div></div>
+<div class="works" id="worksContainer">
+<article class="work-card reveal" tabindex="0"><div class="work-image"></div><div class="work-content"><div class="work-category">UI / UX REDESIGN</div><div><div class="work-title">WON<br>BANKING</div><span class="work-view">VIEW PROJECT →</span></div></div></article>
+<article class="work-card reveal" tabindex="0"><div class="work-image"></div><div class="work-content"><div class="work-category">WEB REDESIGN</div><div><div class="work-title">JEJU<br>TRAVEL</div><span class="work-view">VIEW PROJECT →</span></div></div></article>
+<article class="work-card reveal" tabindex="0"><div class="work-image"></div><div class="work-content"><div class="work-category">BRAND / WEB</div><div><div class="work-title">KIYOUNG<br>CHICKEN</div><span class="work-view">VIEW PROJECT →</span></div></div></article>
+<article class="work-card reveal" tabindex="0"><div class="work-image"></div><div class="work-content"><div class="work-category">INTERACTION DESIGN</div><div><div class="work-title">TRANSPORT<br>KIOSK</div><span class="work-view">VIEW PROJECT →</span></div></div></article>
+</div></section>
+<section id="skills"><div class="section-title reveal"><h2>SKILLS</h2><span class="section-number">03</span></div><div class="skills"><div class="skill reveal"><div class="skill-number">01</div><h3>UI / UX</h3><p>사용자 분석부터 정보구조, 와이어프레임과 UI 디자인까지 사용자 경험을 설계합니다.</p></div><div class="skill reveal"><div class="skill-number">02</div><h3>WEB DESIGN</h3><p>브랜드와 목적에 맞는 웹사이트의 구조와 비주얼 디자인을 설계합니다.</p></div><div class="skill reveal"><div class="skill-number">03</div><h3>FRONT-END</h3><p>HTML, CSS, JavaScript를 활용해 디자인을 실제 웹 화면으로 구현합니다.</p></div></div></section>
+<section id="contact" class="contact"><div class="section-number">04 / CONTACT</div><h2 class="reveal">LET'S<br>CREATE.</h2><a href="mailto:your@email.com" class="contact-mail reveal">your@email.com →</a></section>
+</main>
+<script>
+const cursor=document.querySelector(".cursor");
+if(matchMedia("(pointer:fine)").matches){
+ document.addEventListener("mousemove",e=>{cursor.style.left=e.clientX+"px";cursor.style.top=e.clientY+"px"});
+ document.querySelectorAll("a,button,.work-card,.skill").forEach(el=>{el.addEventListener("mouseenter",()=>cursor.classList.add("active"));el.addEventListener("mouseleave",()=>cursor.classList.remove("active"))});
+}
+const heroBg=document.querySelector(".hero-bg");
+document.addEventListener("mousemove",e=>{if(!matchMedia("(pointer:fine)").matches)return;const x=(e.clientX/innerWidth-.5)*80;const y=(e.clientY/innerHeight-.5)*80;heroBg.style.transform=`translate(${x}px,${y}px)`});
+const works=document.querySelector("#worksContainer"),gridBtn=document.querySelector("#gridBtn"),listBtn=document.querySelector("#listBtn");
+function setView(mode){const isList=mode==="list";works.classList.toggle("list",isList);gridBtn.classList.toggle("active",!isList);listBtn.classList.toggle("active",isList);gridBtn.setAttribute("aria-pressed",String(!isList));listBtn.setAttribute("aria-pressed",String(isList));document.querySelectorAll(".work-card").forEach(card=>card.style.transform="none")}
+gridBtn.addEventListener("click",()=>setView("grid"));listBtn.addEventListener("click",()=>setView("list"));
+document.querySelectorAll(".work-card").forEach(card=>{
+ card.addEventListener("mousemove",e=>{if(works.classList.contains("list")||!matchMedia("(pointer:fine)").matches)return;const r=card.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;const ry=(x/r.width-.5)*8,rx=(y/r.height-.5)*-8;card.style.transform=`perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.01)`});
+ card.addEventListener("mouseleave",()=>card.style.transform="none");
+});
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("show");observer.unobserve(entry.target)}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
